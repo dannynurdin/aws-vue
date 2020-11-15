@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import Camera from '../views/Camera.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +17,12 @@ const routes = [
     name: 'About',
     component: About,
     // meta: { requiresAuth: true }
-  }
+  },
+  {
+    path: '/camera',
+    name: 'Camera',
+    component: Camera
+  },
 ]
 
 const router = new VueRouter({
