@@ -1,7 +1,7 @@
 <template>
     <div class="camera">
         <video autoplay class="feed"></video>
-        <button class="btn" v-on:click="$emit('takePicture')">Take Picture</button>
+        <button class="btn" v-on:click="$emit('takepicture')">Take Picture</button>
     </div>
 </template>
 

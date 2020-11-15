@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Webcam v-on:takePicture="this.takePicture" />
+        <Webcam v-on:takepicture="this.takePicture" />
         <Gallery />
     </div>
 </template>
@@ -26,7 +26,7 @@ export default {
             
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = "high"
-            ctx.drawImage(document.querySelector("video"), 0, 0, gallery.height, gallery.width)
+            ctx.drawImage(document.querySelector("video"), 0, 0, gallery.width, gallery.height)
 
             var canvas = document.getElementById('canvas');
             var dataURL = canvas.toDataURL();
