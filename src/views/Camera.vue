@@ -1,7 +1,7 @@
 <template>
     <div>
         <Webcam v-on:takepicture="this.takePicture" />
-        {{ fullname + '.' + group }}
+        
         <input type="text" v-model="fullname" placeholder="enter your name">
         <input type="text" v-model="group" placeholder="enter your group">
         <Gallery v-on:sendpicture="this.savePictures" />
