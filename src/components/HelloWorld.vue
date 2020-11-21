@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
-    <div v-if=!signedIn>
+    <!-- <div v-if=!signedIn>
       <amplify-authenticator/>
     </div>
     <div v-if=signedIn>
       <amplify-sign-out/>
-    </div>
+    </div> -->
+    <h1>Serverless Attendance Beta Test</h1>
+    <h3>v 0.1</h3>
   </div>
 </template>
 

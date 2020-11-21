@@ -1,10 +1,7 @@
 <template>
     <div>
         <Webcam v-on:takepicture="this.takePicture" />
-        <input type="text" v-model="fullname" placeholder="enter your name">
-        <input type="text" v-model="group" placeholder="enter your group">
-        
-        <Gallery v-on:sendpicture="this.savePictures" />
+        <Gallery v-on:sendpicture="this.sendPicture" />
     </div>
 </template>
 
@@ -13,7 +10,7 @@ import Webcam from '@/components/Webcam.vue';
 import Gallery from '@/components/Gallery.vue';
 
 export default {
-    name: 'camera',
+    name: 'absent',
     components: {
         Webcam,
         Gallery
@@ -21,8 +18,6 @@ export default {
     data() {
         return{
             info: "",
-            fullname:"",
-            group:""
         }
     },
     methods: {
@@ -46,8 +41,7 @@ export default {
             // console.log(buf)
             this.$store.state.baseUrl = base[1];
         },
-
-        savePictures () {
+        sendPicture () {
             var AWS = require('aws-sdk');
             
 
@@ -63,15 +57,11 @@ export default {
             var randomInteger = Math.floor((Math.random() * 1000000) + 1);
 
             var params = {
-                Bucket: 'face-collection-1221',
+                Bucket: 'asbent-pool-1221',
                 Key: timestamp + "_" + randomInteger + ".JPG", 
                 Body: buf,
                 ContentEncoding: 'base64',
-                ContentType: 'image/jpeg',
-                Metadata: {
-                    'fullname': this.fullname,
-                    'group': this.group
-                }
+                ContentType: 'image/jpeg'
             };
             s3.upload(params, (err, data) => {
                 if (err) { 

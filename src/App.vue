@@ -2,8 +2,10 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">Server</router-link> |
-      <router-link to="/camera">Camera</router-link>
+      <router-link to="/about">Server Status</router-link> |
+      <router-link to="/camera">Camera</router-link> |
+      <router-link to="/absent">Take Absent</router-link> |
+      <router-link to="/record">Absent Record</router-link>
     </div>
     <router-view/>
   </div>

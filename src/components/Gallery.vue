@@ -1,24 +1,26 @@
 <template>
     <div class="gallery">
         <canvas id="canvas"></canvas>
+        <!-- <button class="take" v-on:click="savePictures">Save Picture</button> -->
+        
+        <button class="take" v-on:click="$emit('sendpicture')">Save Picture</button>
     </div>
 </template>
 
 <script>
 export default {
     name: 'gallery',
+    methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
 .gallery {
-
-    padding: 25px;
     box-sizing: border-box;
     canvas {
-        
+        display: block;
         width: 100%;
-        max-width: 1280px;
+        max-width: 640px;
 
         margin: 0 auto;
 

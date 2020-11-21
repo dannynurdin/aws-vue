@@ -50,7 +50,7 @@ export default {
         display: block;
         padding:12px;
         width: 100%;
-        max-width: 1280px;
+        max-width: 640px;
 
         margin: 0 auto;
 

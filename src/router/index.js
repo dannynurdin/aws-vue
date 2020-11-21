@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Camera from '../views/Camera.vue'
+import Absent from '../views/Absent.vue'
+import Record from '../views/Record.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,17 @@ const routes = [
     name: 'Camera',
     component: Camera
   },
+  {
+    path: '/absent',
+    name: 'Absent',
+    component: Absent
+  },
+  {
+    path: '/record',
+    name: 'Record',
+    component: Record
+  },
+
 ]
 
 const router = new VueRouter({
