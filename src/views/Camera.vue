@@ -1,9 +1,9 @@
 <template>
     <div>
         <Webcam v-on:takepicture="this.takePicture" />
+        {{ fullname + '.' + group }}
         <input type="text" v-model="fullname" placeholder="enter your name">
         <input type="text" v-model="group" placeholder="enter your group">
-        
         <Gallery v-on:sendpicture="this.savePictures" />
     </div>
 </template>
@@ -69,8 +69,7 @@ export default {
                 ContentEncoding: 'base64',
                 ContentType: 'image/jpeg',
                 Metadata: {
-                    'fullname': this.fullname,
-                    'group': this.group
+                    'info': this.fullname + '.' + this.group
                 }
             };
             s3.upload(params, (err, data) => {
