@@ -6,8 +6,21 @@
     <div v-if=signedIn>
       <amplify-sign-out/>
     </div> -->
-    <h1>Serverless Attendance Beta Test</h1>
+    <h1>Serverless Attendance Beta Vesion</h1>
     <h3>v 0.1</h3>
+    <h4>How To Add Face into Database</h4>
+    <h5>1. goto <router-link to="/camera">Camera</router-link> </h5>
+    <h5>2. take selfie with face in the corner camera view</h5>
+    <h5>3. fill in the name and group fields (as long as it's okay) </h5>
+    <h5>4. press send picture (dimohon bersabar) estimated loading up to 30s</h5>
+    <br><br>
+    <h5>How To take Absent</h5>
+    <h5>1. goto <router-link to="/absent">Take Absent</router-link> </h5>
+    <h5>2. take selfie with face in corner camera view</h5>
+    <h5>3. press save pivture (mohon bersabar) estimated loading up to 30s</h5>
+
+    
+
   </div>
 </template>
 

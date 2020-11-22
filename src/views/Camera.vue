@@ -55,8 +55,8 @@ export default {
             var buf = Buffer.from(data, 'base64')
             
             const s3 = new AWS.S3({
-                accessKeyId: 'AKIA5O74KBBPWS7UXCUO',
-                secretAccessKey: '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'
+                accessKeyId: 'AKIA5O74KBBPY62CWKGX',
+                secretAccessKey: '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'
             });
             
             var timestamp = (new Date()).getTime();
