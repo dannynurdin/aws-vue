@@ -1,15 +1,20 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">Server Status</router-link> |
-      <router-link to="/camera">Camera</router-link> |
-      <router-link to="/absent">Take Absent</router-link> |
-      <router-link to="/record">Absent Record</router-link>
+  <div id="app" class=" bg-gradient-to-r from-emerald-200 via-teal-400 to-emerald-400 min-h-screen">
+    <div>
+      <Navigation  class=" bg-yellow-300 rounded-t-md"/>
+      <router-view class="bg-white lg:mx-64 rounded-b-md"/>
     </div>
-    <router-view/>
   </div>
 </template>
+
+<script>
+import Navigation from '@/components/Navigation.vue'
+export default {
+  components: {
+    Navigation
+  }
+}
+</script>
 
 <style>
 #app {

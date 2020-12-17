@@ -4,7 +4,7 @@
         
         <input type="text" v-model="fullname" placeholder="enter your name">
         <input type="text" v-model="group" placeholder="enter your group">
-        <Gallery v-on:sendpicture="this.savePictures" />
+        <Gallery v-on:sendpicture="this.savePicture" />
     </div>
 </template>
 
@@ -40,48 +40,78 @@ export default {
 
             var canvas = document.getElementById('canvas');
             var dataURL = canvas.toDataURL();
+            this.$store.state.dataUrl = dataURL
             var base = dataURL.split(",")
             // console.log(base[1]);
-            // var buf = Buffer.from(base[1], 'base64')
+            //var buf = Buffer.from(base[1], 'base64')
             // console.log(buf)
             this.$store.state.baseUrl = base[1];
         },
 
-        savePictures () {
-            var AWS = require('aws-sdk');
-            
+        savePicture () {
+            const axios = require('axios')
 
-            var data = this.$store.state.baseUrl;
-            var buf = Buffer.from(data, 'base64')
-            
-            const s3 = new AWS.S3({
-                accessKeyId: 'AKIA5O74KBBPY62CWKGX',
-                secretAccessKey: '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'
-            });
-            
             var timestamp = (new Date()).getTime();
             var randomInteger = Math.floor((Math.random() * 1000000) + 1);
 
-            var params = {
-                Bucket: 'face-collection-1221',
-                Key: timestamp + "_" + randomInteger + ".JPG", 
-                Body: buf,
-                ContentEncoding: 'base64',
-                ContentType: 'image/jpeg',
-                Metadata: {
-                    'info': this.fullname + '.' + this.group
-                }
+            //var buf = Buffer.from(this.$store.state.baseUrl, 'base64')
+            
+
+            var postData = {
+                bucket: "face-collection-1221",
+                name: this.fullname,
+                group: this.group,
+                body: this.$store.state.baseUrl,
+                key: timestamp + "_" + randomInteger + ".JPG",
+                //buf: buf,
+                // dataurl: this.$store.state.dataUrl
+                
             };
-            s3.upload(params, (err, data) => {
-                if (err) { 
-                    console.log(err);
-                    console.log('Error uploading data: ', data); 
-                } else {
-                    console.log('successfully uploaded the image!');
-                    alert("image uploaded!")
-                }
-            });
-        }
+            const url = this.$store.state.urlApiV2 + "/dev/upload"
+            axios.post(url, postData)
+            .then((res) => {
+            console.log("RESPONSE RECEIVED: ", res);
+            })
+            .catch((err) => {
+            console.log("AXIOS ERROR: ", err);
+            })
+
+        },
+           
+      
+        // savePictures () {
+        //     var AWS = require('aws-sdk');
+            
+
+        //     var data = this.$store.state.baseUrl;
+        //     console.log(data)
+        //     var buf = Buffer.from(data, 'base64')
+            
+        //    
+            
+        //     var timestamp = (new Date()).getTime();
+        //     var randomInteger = Math.floor((Math.random() * 1000000) + 1);
+
+        //     var params = {
+        //         Bucket: 'face-collection-1221',
+        //         Key: timestamp + "_" + randomInteger + ".JPG", 
+        //         Body: buf,
+        //         ContentEncoding: 'base64',
+        //         ContentType: 'image/jpeg',
+        //         Metadata: {
+        //             'info': this.fullname + '.' + this.group
+        //         }
+        //     };
+        //     s3.upload(params, (err, data) => {
+        //         if (err) { 
+        //             console.log(err);
+        //             console.log('Error uploading data: ', data); 
+        //         } else {
+        //             console.log('successfully uploaded the image!');
+        //             alert("image uploaded!")
+        //         }
+        //     });
+        // }
 
 //         savePicture(){
 //             var AWS = require('aws-sdk');
@@ -110,17 +140,10 @@ export default {
 //         }
 
         // savePicture () {
-        //     var AWS = require('aws-sdk');
+        //     var A = require('aw-sdk');
         //     var config = {
-        //     // link penting https://gist.github.com/maephisto/115d4237ada17aef5b8a
-        //     "aws" : {
-        //             "bucket": "dannynurdin",
-        //             "credentials" : {
-        //                 "accessKeyId": "AKIA5O74KBBPWS7UXCUO",
-        //                 "secretAccessKey": "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"
-        //             }
-        //         }
-        //     };
+        //     // link penting httpsom/maephisto/115d4237ada17aef5b8a
+        //    
 
         //     var getUniqueFilename = function(config) {
         //         var timestamp = (new Date()).getTime();

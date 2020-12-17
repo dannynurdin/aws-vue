@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Camera from '../views/Camera.vue'
 import Absent from '../views/Absent.vue'
 import Record from '../views/Record.vue'
+import Sispak from '../views/Sispak.vue'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,12 @@ const routes = [
     name: 'Record',
     component: Record
   },
+  {
+    path: '/sispak',
+    name: 'Sispak',
+    component: Sispak
+  },
+  
 
 ]
 
