@@ -1,9 +1,5 @@
 <template>
     <div>
-        <div>
-            <p>gejala yang dirasakan :</p>
-            {{li}}
-        </div>
         <ul v-for="n in gejala" v-bind:key="n" class=" flex flex-col">
             <li class="flex justify-start">
                 <input type="checkbox" :value="n.code" v-model="li" class="ml-3 flex justify-center items-center">
