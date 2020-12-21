@@ -21,22 +21,6 @@ export default {
       axios
       .get('https://osu0259zlj.execute-api.ap-southeast-1.amazonaws.com/dev/absent')
       .then(response => (this.records = response.data))
-        // const api_url = "https://osu0259zlj.execute-api.ap-southeast-1.amazonaws.com/dev/absent"; 
-  
-        // // Defining async function 
-        // async function getapi(url) { 
-            
-        //     // Storing response 
-        //     const response = await fetch(url); 
-            
-        //     // Storing data in form of JSON 
-        //     var data = await response.json();
-             
-        //     console.log(data); 
-            
-        // } 
-        // // Calling that async function 
-        // getapi(api_url);
     }
 }
 </script>
