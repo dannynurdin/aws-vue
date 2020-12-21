@@ -1,14 +1,20 @@
 <template>
     <div>
+        <p class="mx-3 text-lg text-center">Daftar gejala</p>
         <ul v-for="n in gejala" v-bind:key="n" class=" flex flex-col">
             <li class="flex justify-start">
                 <input type="checkbox" :value="n.code" v-model="li" class="ml-3 flex justify-center items-center">
                 <label class=" flex px-3 justify-center items-center text-center">{{n.text}}</label>
             </li>
         </ul>
-        <button v-on:click="this.sendData" class="bg-purple-600 text-white font-semibold text-md px-3 py-2 rounded-lg leading-5 mb-5">Diagnosa</button>
+        <button v-on:click="this.sendData"  class=" bg-purple-600 text-white font-semibold text-md px-3 py-2 rounded-lg leading-5 mb-5">
+            Diagnosa
+        </button>
         <div>
             <p class="text-2xl text-center">Hasil diagnosa</p>
+            <div v-for="n in gejala" :key="n">
+                <span>{{ n }}</span>
+            </div>
             <span>{{result.body}}</span>
             <span>{{result.information}}</span>
         </div>
@@ -19,6 +25,7 @@
 export default {
     data () {
         return {
+            loading: true,
             result: '',
             gejala: [
                 {
